@@ -12,8 +12,8 @@ using RCLocacoes.Infra.Data.Context;
 namespace RCLocacoes.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221108224957_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20221118074551_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Category", b =>
@@ -74,11 +74,11 @@ namespace RCLocacoes.Infra.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Client", b =>
@@ -120,7 +120,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("ClientTypeId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.ClientType", b =>
@@ -136,7 +136,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClientTypes");
+                    b.ToTable("ClientType");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Local", b =>
@@ -163,7 +163,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Locals");
+                    b.ToTable("Local");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Order", b =>
@@ -206,15 +206,15 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.OrderProduct", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -226,11 +226,11 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.Property<decimal>("ReplacementCost")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("OrderId", "ProductId");
+                    b.HasKey("ProductId", "OrderId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("OrderId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Product", b =>
@@ -242,16 +242,16 @@ namespace RCLocacoes.Infra.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("Inactive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Picture")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(MAX)");
 
                     b.Property<decimal>("RentPrice")
                         .HasColumnType("decimal(18,2)");
@@ -261,7 +261,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.ProductCategory", b =>
@@ -284,7 +284,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Status", b =>
@@ -300,7 +300,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Status");
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Client", b =>
