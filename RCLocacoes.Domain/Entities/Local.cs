@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RCLocacoes.Domain.Entities
 {
-    public class Local
+    public class Local : BaseModel
     {
         public int Id { get; set; }
         public int AddressId { get; set; }
