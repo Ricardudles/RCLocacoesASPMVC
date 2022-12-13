@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RCLocacoes.Domain.Entities
 {
-    public class Address
+    public class Address : BaseModel
     {
+
         public int Id { get; set; }
         public int ZipCode { get; set; }
         public char Country { get; set; }

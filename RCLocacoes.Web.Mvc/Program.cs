@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RCLocacoes.Infra.Data.Context;
+using RCLocacoes.Infra.Data.Repository;
+using RCLocacoes.Infra.Data.Repository.Interfaces;
 using RCLocacoes.Infra.Data.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ string connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddTransient<IDataService, DataService>();
+builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 
 
 var app = builder.Build();
@@ -26,8 +29,11 @@ using (var scope = app.Services.CreateScope())
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+else
+{
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
