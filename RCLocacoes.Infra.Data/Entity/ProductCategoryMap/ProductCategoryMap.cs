@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RCLocacoes.Infra.Data.Entity.AddressMap
+namespace RCLocacoes.Infra.Data.Entity.ProductCategoryMap
 {
-    public class AddressMap : IEntityTypeConfiguration<Domain.Entities.Address>
+    public class ProductCategoryMap : IEntityTypeConfiguration<Domain.Entities.ProductCategory>
     {
-        public void Configure(EntityTypeBuilder<Address> builder)
+        public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
-            builder.ToTable("Address");
+            builder.ToTable("ProductCategory");
             builder.HasKey(p => p.Id);
         }
     }

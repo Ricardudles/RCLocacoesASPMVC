@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RCLocacoes.Infra.Data.Repository.Interfaces
 {
-    public interface IAddressRepository : IBaseRepository<Address>
+    public interface ILoginRepository : IBaseRepository<Login>
     {
     }
 }

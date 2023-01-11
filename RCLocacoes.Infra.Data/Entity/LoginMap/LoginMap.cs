@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RCLocacoes.Infra.Data.Entity.AddressMap
+namespace RCLocacoes.Infra.Data.Entity.LoginMap
 {
-    public class AddressMap : IEntityTypeConfiguration<Domain.Entities.Address>
+    public class LoginMap : IEntityTypeConfiguration<Domain.Entities.Login>
     {
-        public void Configure(EntityTypeBuilder<Address> builder)
+        public void Configure(EntityTypeBuilder<Login> builder)
         {
-            builder.ToTable("Address");
-            builder.HasKey(p => p.Id);
+            builder.ToTable("Login");
+            builder.HasKey(p => p.UserId);
         }
     }
 }

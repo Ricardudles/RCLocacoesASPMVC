@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RCLocacoes.Infra.Data\RCLocacoes.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
