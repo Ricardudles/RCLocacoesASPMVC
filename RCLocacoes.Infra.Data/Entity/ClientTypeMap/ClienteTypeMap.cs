@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RCLocacoes.Infra.Data.Entity.AddressMap
+namespace RCLocacoes.Infra.Data.Entity.ClientTypeMap
 {
-    public class AddressMap : IEntityTypeConfiguration<Domain.Entities.Address>
+    public class ClientTypeMap : IEntityTypeConfiguration<Domain.Entities.ClientType>
     {
-        public void Configure(EntityTypeBuilder<Address> builder)
+        public void Configure(EntityTypeBuilder<ClientType> builder)
         {
-            builder.ToTable("Address");
+            builder.ToTable("ClientType");
             builder.HasKey(p => p.Id);
         }
     }

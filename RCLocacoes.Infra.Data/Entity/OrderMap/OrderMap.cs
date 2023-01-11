@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RCLocacoes.Infra.Data.Entity.AddressMap
+namespace RCLocacoes.Infra.Data.Entity.OrderMap
 {
-    public class AddressMap : IEntityTypeConfiguration<Domain.Entities.Address>
+    public class OrderMap : IEntityTypeConfiguration<Domain.Entities.Order>
     {
-        public void Configure(EntityTypeBuilder<Address> builder)
+        public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.ToTable("Address");
+            builder.ToTable("Order");
             builder.HasKey(p => p.Id);
+
         }
     }
 }

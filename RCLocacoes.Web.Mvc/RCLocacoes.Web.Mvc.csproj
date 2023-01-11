@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RCLocacoes.Application\RCLocacoes.Application.csproj" />
     <ProjectReference Include="..\RCLocacoes.Infra.Data\RCLocacoes.Infra.Data.csproj" />
     <ProjectReference Include="..\RCLocacoes.Infrastructure.IoC\RCLocacoes.Infrastructure.IoC.csproj" />
   </ItemGroup>

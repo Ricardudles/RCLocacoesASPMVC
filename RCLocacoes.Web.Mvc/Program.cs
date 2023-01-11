@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using RCLocacoes.Application.Interface;
+using RCLocacoes.Application.UseCase;
 using RCLocacoes.Infra.Data.Context;
 using RCLocacoes.Infra.Data.Repository;
 using RCLocacoes.Infra.Data.Repository.Interfaces;
@@ -21,6 +23,8 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 
 builder.Services.AddTransient<IDataService, DataService>();
 builder.Services.AddTransient<IAddressRepository, AddressRepository>();
+builder.Services.AddTransient<ILoginRepository, LoginRepository>();
+builder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
 
 
 var app = builder.Build();

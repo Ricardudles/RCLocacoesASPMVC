@@ -21,36 +21,6 @@ namespace RCLocacoes.Infra.Data.Context
 
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Product>().HasKey(p => p.Id);
-            //modelBuilder.Entity<Product>().Property(p => p.Name).HasColumnType("varchar(100)");
-            //modelBuilder.Entity<Product>().Property(p => p.Description).HasColumnType("varchar(250)");
-            //modelBuilder.Entity<Product>().Property(p => p.RentPrice).HasColumnType("decimal(18,2)").IsRequired();
-            //modelBuilder.Entity<Product>().Property(p => p.ReplacementCost).HasColumnType("decimal(18,2)").IsRequired();
-            //modelBuilder.Entity<Product>().Property(p => p.Inactive).HasColumnType("bit").IsRequired();
-            //modelBuilder.Entity<Product>().Property(p => p.Picture).HasColumnType("varchar(MAX)");
-
-            //modelBuilder.Entity<Category>().HasKey(p => p.Id);
-            //modelBuilder.Entity<Category>().Property(p => p.Name).HasColumnType("varchar(100)");
-
-            //modelBuilder.Entity<ProductCategory>().HasKey(p => p.Id);
-
-            //modelBuilder.Entity<Local>().HasKey(p => p.Id);
-
-            //modelBuilder.Entity<Client>().HasKey(p => p.Id);
-
-
-            //modelBuilder.Entity<ClientType>().HasKey(p => p.Id);
-
-
-            //modelBuilder.Entity<Order>().HasKey(p => p.Id);
-
-
-            //modelBuilder.Entity<OrderProduct>().HasKey(p => new { p.ProductId, p.OrderId });
-            //modelBuilder.Entity<OrderProduct>().Property(p => p.RentPrice).HasColumnType("decimal(18,2)").IsRequired();
-            //modelBuilder.Entity<OrderProduct>().Property(p => p.ReplacementCost).HasColumnType("decimal(18,2)").IsRequired();
-
-            //modelBuilder.Entity<Status>().HasKey(p => p.Id);
-
         }
 
         private void MapEntity(ModelBuilder modelBuilder)
