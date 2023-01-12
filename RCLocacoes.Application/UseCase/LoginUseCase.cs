@@ -22,5 +22,17 @@ namespace RCLocacoes.Application.UseCase
         {
             loginRepository.Add(login);
         }
+
+        public void UpdateAccount(Login login)
+        {
+            loginRepository.Update(login);
+        }
+
+        public bool VerifyAccount(Login login)
+        {
+            var exists = loginRepository.GetFirstByExp(p => p.Email == login.Email.Trim() && p.Password == login.Password.Trim()) != null;
+
+            return exists;
+        }
     }
 }

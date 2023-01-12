@@ -6,6 +6,7 @@ using RCLocacoes.Infra.Data.Repository;
 using RCLocacoes.Web.Mvc.Models;
 using RCLocacoes.Application.Interface;
 using RCLocacoes.Domain.Entities;
+using NuGet.Protocol.Plugins;
 
 namespace RCLocacoes.Web.Mvc.Controllers
 {
@@ -37,20 +38,17 @@ namespace RCLocacoes.Web.Mvc.Controllers
                 return View(modelLogin);
             }
 
-            //var login = new Login
-            //{
-            //    Email = modelLogin.Email,
-            //    Password = modelLogin.Password,
-            //    KeepLoggedIn = modelLogin.KeepLoggedIn
-            //};
+            var login = new Login
+            {
+                Email = modelLogin.Email,
+                Password = modelLogin.Password,
+                KeepLoggedIn = modelLogin.KeepLoggedIn
+            };
 
-            //loginUseCase.AddAccount(login);
-
-            if (modelLogin.Email == "teste@hotmail.com" && modelLogin.Password == "oi")
+            if (loginUseCase.VerifyAccount(login))
             {
                 List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, modelLogin.Email),
-                    new Claim("Ola", "Roles"),
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -68,10 +66,23 @@ namespace RCLocacoes.Web.Mvc.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-
             TempData["error"] = "User not found!";
             return View();
+        }
 
+        [HttpPost]
+        public IActionResult Create(Login modelLogin)
+        {
+            var login = new Login
+            {
+                Email = modelLogin.Email,
+                Password = modelLogin.Password,
+                KeepLoggedIn = modelLogin.KeepLoggedIn
+            };
+
+            loginUseCase.AddAccount(login);
+
+            return RedirectToAction("Login");
         }
     }
 }
