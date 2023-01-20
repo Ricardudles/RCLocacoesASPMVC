@@ -29,19 +29,17 @@
                 <h1><a href="index.html" class="logo">Welcome!</a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a asp-controller="Home" asp-action="Index"><span class="fa fa-home mr-3"></span> Home</a>
+                        <a asp-controller="Home" asp-action="Index">@*<span class="fa fa-home mr-3"></span>*@ Home</a>
                     </li>
                     <li>
                         <a data-bs-toggle="collapse"
                            data-bs-target="#home-collapse"
                            aria-expanded="true">
-                            <span class="fa fa-box mr-3"></span> Registrations
+                             Registrations
                         </a>
                         <div class="collapse" id="home-collapse" style="">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="/" class="rounded">Overview</a></li>
-                                <li><a href="#" class="rounded">Updates</a></li>
-                                <li><a href="#" class="rounded">Reports</a></li>
+                                <li><a asp-controller="Category" asp-action="Index" class="rounded">@* <span class="fas fa-box mr-3"></span>*@ Categories</a></li>
                             </ul>
                         </div>
                     </li>
