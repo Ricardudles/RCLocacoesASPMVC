@@ -59,7 +59,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Category", b =>
@@ -75,7 +75,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Client", b =>
@@ -117,7 +117,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("ClientTypeId");
 
-                    b.ToTable("Client");
+                    b.ToTable("Client", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.ClientType", b =>
@@ -133,7 +133,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClientType");
+                    b.ToTable("ClientType", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Local", b =>
@@ -160,7 +160,31 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Local");
+                    b.ToTable("Local", (string)null);
+                });
+
+            modelBuilder.Entity("RCLocacoes.Domain.Entities.Login", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("KeepLoggedIn")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Login", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Order", b =>
@@ -203,7 +227,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.OrderProduct", b =>
@@ -227,7 +251,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderProduct");
+                    b.ToTable("OrderProduct", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Product", b =>
@@ -258,7 +282,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.ProductCategory", b =>
@@ -281,7 +305,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategory");
+                    b.ToTable("ProductCategory", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Status", b =>
@@ -297,7 +321,7 @@ namespace RCLocacoes.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Status");
+                    b.ToTable("Status", (string)null);
                 });
 
             modelBuilder.Entity("RCLocacoes.Domain.Entities.Client", b =>
@@ -305,13 +329,13 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.HasOne("RCLocacoes.Domain.Entities.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RCLocacoes.Domain.Entities.ClientType", "ClientType")
                         .WithMany()
                         .HasForeignKey("ClientTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Address");
@@ -324,7 +348,7 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.HasOne("RCLocacoes.Domain.Entities.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Address");
@@ -335,19 +359,19 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.HasOne("RCLocacoes.Domain.Entities.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RCLocacoes.Domain.Entities.Local", "Local")
                         .WithMany()
                         .HasForeignKey("LocalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RCLocacoes.Domain.Entities.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Client");
@@ -362,13 +386,13 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.HasOne("RCLocacoes.Domain.Entities.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RCLocacoes.Domain.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -381,13 +405,13 @@ namespace RCLocacoes.Infra.Data.Migrations
                     b.HasOne("RCLocacoes.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RCLocacoes.Domain.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");

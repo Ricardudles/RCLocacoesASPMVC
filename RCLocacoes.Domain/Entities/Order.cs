@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RCLocacoes.Domain.Entities
 {
-    public class Order
+    public class Order : BaseModel
     {
         public int Id { get; set; }
         public int StatusId { get; set; }
